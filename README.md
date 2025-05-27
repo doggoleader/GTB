@@ -15,7 +15,7 @@ Remove all characters or click on "Clear" button to clear it all to enter the ne
 
 
 
-## Guess The Build Hypixel Guesser
+# Guess The Build Hypixel Guesser
 Дектопное приложения для отгадывания тем в режиме Guess The Build (Угадай постройку) на Hypixel.
 ## Установка
 Чтобы установить это приложения, пожалуйста, следуйте инструкции:
