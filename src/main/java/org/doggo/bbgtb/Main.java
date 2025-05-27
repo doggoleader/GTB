@@ -14,6 +14,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import org.doggo.bbgtb.updates.GithubUpdateChecker;
+import org.doggo.bbgtb.updates.UpdateInfo;
 
 import java.util.*;
 
@@ -24,6 +26,9 @@ public class Main extends Application {
     private ObservableList<String> currentThemes;
     @Override
     public void start(Stage primaryStage) {
+        GithubUpdateChecker checker = new GithubUpdateChecker();
+        checker.checkForUpdates(this::showUpdateDialog);
+
         initData();
 
         VBox root = new VBox(10);
@@ -205,7 +210,41 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
 
+        launch(args);
+    }
+
+    private void showUpdateDialog(UpdateInfo info) {
+        VBox content = new VBox(10);
+        Label versionLabel = new Label("Доступна новая версия: " + info.getVersion());
+        TextArea changes = new TextArea(info.getBody());
+        changes.setEditable(false);
+        changes.setWrapText(true);
+
+        HBox linksBox = new HBox(10);
+        for (UpdateInfo.Asset asset : info.getAssets()) {
+            Hyperlink link = new Hyperlink(asset.getName());
+            link.setOnAction(e -> getHostServices().showDocument(asset.getDownloadUrl()));
+            linksBox.getChildren().add(link);
+        }
+
+        Hyperlink releaseLink = new Hyperlink("Страница релиза");
+        releaseLink.setOnAction(e -> getHostServices().showDocument(info.getUrl()));
+
+        content.getChildren().addAll(
+                versionLabel,
+                new Label("Изменения:"),
+                changes,
+                new Label("Скачать:"),
+                linksBox,
+                releaseLink
+        );
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Доступно обновление");
+        alert.setHeaderText(null);
+        alert.getDialogPane().setContent(content);
+        alert.getDialogPane().setPrefSize(600, 400);
+        alert.showAndWait();
     }
 }

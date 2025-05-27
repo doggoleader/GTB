@@ -2,7 +2,7 @@
 A Desktop App for guessing themes in Guess The Build mode on Hypixel
 ## Installation
 To install this app, please, follow this instructions:
-1. Download and install Java 23+
+1. Download and install Java 21+
 2. Download a zip/rar archive from [Releases](https://github.com/doggoleader/GTB/releases/)
 3. Extract the contents to any folder
 4. Run "start.bat" file.
@@ -19,7 +19,7 @@ Remove all characters or click on "Clear" button to clear it all to enter the ne
 Дектопное приложения для отгадывания тем в режиме Guess The Build (Угадай постройку) на Hypixel.
 ## Установка
 Чтобы установить это приложения, пожалуйста, следуйте инструкции:
-1. Установите Java версии 23 или выше
+1. Установите Java версии 21 или выше
 2. Скачайте архив zip/rar из меню [релизов](https://github.com/doggoleader/GTB/releases/)
 3. Распакуйте содержимое в любую папку
 4. Запустите файл "start.bat".
