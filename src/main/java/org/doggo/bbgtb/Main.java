@@ -24,6 +24,7 @@ public class Main extends Application {
     private ListView<String> resultList = new ListView<>();
     private Map<String, ObservableList<String>> themesByLanguage = new HashMap<>();
     private ObservableList<String> currentThemes;
+    private TextField patternField;
     @Override
     public void start(Stage primaryStage) {
         GithubUpdateChecker checker = new GithubUpdateChecker();
@@ -120,6 +121,7 @@ public class Main extends Application {
         primaryStage.setTitle("Угадай постройку");
         primaryStage.setScene(scene);
         primaryStage.show();
+        this.patternField = patternField;
     }
 
     private void initData() {
@@ -136,6 +138,7 @@ public class Main extends Application {
     private void updateThemes() {
         String lang = languageCombo.getValue();
         currentThemes = themesByLanguage.get(lang);
+        this.patternField.setText("");
         showFullList();
     }
 
